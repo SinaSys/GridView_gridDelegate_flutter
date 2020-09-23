@@ -35,19 +35,15 @@ class MyHomePage extends StatelessWidget {
   ];
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: GridView.builder(
-            itemCount: elements.length,
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 130.0,
-              crossAxisSpacing: 20.0,
-              mainAxisSpacing: 20.0,
-            ),
-            itemBuilder: (context, i) => Card(
-                child: Center(
-                    child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(elements[i]))))));
-  }
+  Widget build(context) => Scaffold(
+      body: GridView.extent(
+          maxCrossAxisExtent: 130.0,
+          crossAxisSpacing: 20.0,
+          mainAxisSpacing: 20.0,
+          children: elements
+              .map((el) => Card(
+                  child: Center(
+                      child: Padding(
+                          padding: EdgeInsets.all(8.0), child: Text(el)))))
+              .toList()));
 }
